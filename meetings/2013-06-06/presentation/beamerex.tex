@@ -1,0 +1,660 @@
+\documentclass{beamer}
+
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\mode<presentation>
+
+  \usetheme{Warsaw}
+  
+
+  \setbeamercovered{transparent}
+
+\def\R{{\mathbb R}}
+\def\C{{\mathbb C}}
+\def\bS{{\mathbb S}}
+
+\title[] % (optional, use only with long paper titles)
+{Acceleration bundles\\ on Banach and Fr\'{e}chet manifolds}
+
+\subtitle {\em JGP Editorial Board Scientific Meeting\\
+In commemoration of Andr\'{e} Lichnerowicz\\ 27-29 June 2006, International
+School for Advanced Studies, Miramare, Trieste Italy  } % (optional)
+
+\author[] % (optional, use only with lots of authors)
+{C.T.J. Dodson$^1$ and G.A. Galanis$^2$}
+
+\institute[ ] % (optional, but mostly needed)
+{$^1$School of Mathematics,
+  University of Manchester\\ $^2$Section of Mathematics, Naval Academy of Greece}
+
+\date[ ] % (optional)
+{}
+
+\subject{Talks}
+% This is only inserted into the PDF information catalog. Can be left
+% out.
+
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+ %\pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+ %\logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%\AtBeginSubsection[]
+%{
+%  \begin{frame}<beamer>
+%    \frametitle{Outline}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+\section{Title}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Abstract}
+\begin{frame}
+{\bf Abstract} The second order tangent bundle $T^{2}M$ of a
+smooth manifold $M$ consists of the equivalence classes of curves
+on $M$ that agree up to their
+acceleration. Dodson and Radivoiovici~\cite{Dod} showed that in the case of a finite $n$%
+-dimensional manifold $M$, $T^{2}M$ becomes a vector bundle over
+$M$ if and only if $M$ is endowed with a linear connection.
+
+\vspace{0.5cm}
+We have extended this result to $M$ modeled on an arbitrary
+Banach space and more generally to those Fr\'{e}chet manifolds
+which can be obtained as projective limits of Banach manifolds.
+Various structural properties have been deduced.
+\end{frame}
+\section{Introduction}{\bf Introduction}\\
+It is an honour to be able to contribute to the memory of Andr\'{e} Lichnerowicz through
+this meeting. The point of contact with his legacy is our attempt to follow his
+tradition of developing global differential geometric structures that help to model
+real phenomena. This characteristic of Lichnerowicz's work Bourguignon
+has highlighted in the 1999 memorial article~\cite{Berger}
+and it is evident also through the 1976 volume in honour of Lichnerowicz's 60$^{th}$
+birthday~\cite{Cahen}.
+
+\vspace{0.5cm}
+Lichnerowicz himself firmly placed in the context of
+quantum and statistical mechanics his work on deformations of algebras of
+smooth functions on a smooth Banach manifold~\cite{AL}.
+
+\newpage
+
+Our constructions have provided in the Fr\'{e}chet manifold case a
+suitable principal bundle of frames $F^{2}M$ for the second tangent bundle
+$T^{2}M,$ which is a vector bundle in the presence of a linear connection.
+Then $T^{2}M$ is associated with ${F}^{2}M$ and a one to one
+correspondence between their connections is provided.
+
+\vspace{0.5cm}
+Fr\'{e}chet spaces of sections arise naturally as
+configurations of a physical field and evolution equations
+naturally involve second order operators.
+
+\vspace{0.5cm}
+We mention first some areas of potential
+application for our results.
+
+\newpage
+
+The moduli space of inequivalent configurations of a physical field is the quotient of the
+infinite-dimensional configuration space $\mathcal{X}$ by the appropriate
+symmetry gauge group.
+
+\vspace{0.5cm}
+Typically, $\mathcal{X}$ is modelled on a Frech\'{e}t
+space of smooth sections of a vector bundle over a closed manifold and is a
+Hilbert Lie group.
+
+
+\vspace{0.5cm}
+Inverse limit Hilbert manifolds and inverse limit Hilbert
+groups, introduced by Omori~\cite{Om,omori}, provide an appropriate setting
+for the study of the Yang-Mills and Seiberg-Witten field equations.
+
+
+\newpage
+Let $M$ be a finite-dimensional path-connected Riemannian manifold.
+The free loop space of all smooth maps from the circle group $S^{1}$ to $M$ is a
+Fr\'{e}chet manifold $\Lambda M,$ cf.
+Manoharan~\cite{manoharan98,manoharan}.
+
+\vspace{0.3cm}
+A string structure is defined as a lifting of the structure
+group to an $S^{1}$-central extension of the loop group. Suppose that
+$\widetilde{G}\rightarrow \widetilde{P}\rightarrow X$ is a lifting of a
+principal Fr\'{e}chet bundle $G\rightarrow P\rightarrow X$ over a Fr\'{e}%
+chet manifold $X$ and further that $S^{1}\rightarrow \widetilde{G}%
+\rightarrow G$ is an $S^{1}$-central extension of $G.$ Manoharan showed that
+every connection on the principal bundle $G\rightarrow P\rightarrow X$
+together with a $\widetilde{G}$-invariant connection on $S^{1}\rightarrow
+\widetilde{P}\rightarrow P$ defines a connection on $\widetilde{G}%
+\rightarrow \widetilde{P}\rightarrow X.$
+
+\newpage
+
+The group $\mathcal{D}$ of orientation preserving smooth
+diffeomorphisms of a compact manifold $M$ is homeomorphic to the product of
+the group of volume preserving diffeomorphisms $\mathcal{D}_{\mu }$, of a
+volume element $\mu $ on $M$, times the set $\mathcal{V}$ of all volumes $%
+v>0 $ with $\int v=\int \mu $. In this case, $\mathcal{D}_{\mu }$ can be
+realized as a projective limit of Hilbert-modelled manifolds (see Omori~\cite%
+{Om,omori}) and forms the appropriate framework for the study of
+hydrodynamics of an incompressible fluid.
+
+\vspace{0.5cm}
+
+Moreover, there is a close relationship between geodesics on $\mathcal{D}%
+_{\mu }$ and the classical Euler equations for a perfect fluid. Namely, if $%
+\eta _{t}\in \mathcal{D}_{\mu }$ is a geodesic of $\mathcal{D}_{\mu }$ as
+above and $v_{t}=d\eta _{t}/dt$ the velocity, then the vector field $%
+u_{t}=v_{t}\circ \eta _{t}^{-1}$ of $M$ is a solution to the classical Euler
+equations.
+
+\newpage
+The space $J^{\infty }E$ of infinite jets of the sections of a Banach
+modelled vector bundle $E$ can be realized as the projective limit of the
+finite corresponding jets $\{J^{k}E\}_{k\in \mathbb{N}}$.
+
+
+\vspace{0.5cm}
+This approach
+makes possible the definition of a Fr\'{e}chet modelled vector bundle on
+$J^{\infty }E$ and thus the use of the latter for the description of
+Lagrangians and source equations as certain types of differential forms, cf.
+Galanis~\cite{Gal2}, Takens~\cite{Takens} and Lewis~\cite{lewis}.
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Preliminaries}{\bf Preliminaries}\\
+In the case of a finite $n$%
+-dimensional manifold $M$,  if and only if $M$ is endowed with a linear
+connection, $T^{2}M$ becomes a
+vector bundle over $M$ with structure group the general linear
+group $GL(2n;\mathbb{R})$ and, therefore, a $3n$-dimensional
+manifold~\cite{Dod}.
+
+\vspace{1cm}
+{\bf Banach case}\\
+Consider a manifold $M$ modeled on an arbitrarily chosen
+Banach space $\mathbb{E}$. Using the Vilms~\cite{Vi} point of view
+for connections on infinite dimensional vector bundles and a new
+formalism, we prove that $T^{2}M$ can be thought of as a Banach
+vector bundle over $M$ with structure group $GL(\mathbb{E}\times
+\mathbb{E})$ if and only if $M$ admits a linear connection.
+
+\newpage
+Let $M$ be a $C^{\infty }-$manifold modeled on a Banach space
+$\mathbb{E}$ and atlas $\{(U_{\alpha },\psi _{\alpha })\}_{\alpha \in
+I}$. This gives atlas
+$\{(\pi _{M}^{-1}(U_{\alpha }),\Psi
+_{\alpha })\}_{\alpha \in I}$ for the tangent bundle $TM$ of $M$ with%
+\begin{equation*}
+\Psi _{\alpha }:\pi _{M}^{-1}(U_{\alpha })\longrightarrow \psi
+_{\alpha }(U_{\alpha })\times \mathbb{E}:[c,x]\longmapsto (\psi
+_{\alpha }(x),(\psi _{\alpha }\circ c)^{\prime }(0)),
+\end{equation*}%
+where $[c,x]$ is the equivalence class of smooth curves
+$c$ of $M$ with $c(0)=x$ and $(\psi _{\alpha }\circ c)^{\prime
+}(0)=[d(\psi _{\alpha }\circ c)(0)](1)$. The
+trivializing system of $T(TM)$ is
+denoted by
+$$\{(\pi _{TM}^{-1}(\pi _{M}^{-1}(U_{\alpha })),\widetilde{\Psi }%
+_{\alpha })\}_{\alpha \in I}.$$
+
+\newpage
+A connection on $M$ is a vector bundle morphism:%
+\begin{equation*}
+D:T(TM)\longrightarrow TM
+\end{equation*}%
+with smooth mappings $\omega _{\alpha
+}:\psi
+_{\alpha }(U_{\alpha })\times \mathbb{E}\rightarrow \mathcal{L}(\mathbb{E},%
+\mathbb{E)}$ defined by the local forms of D:%
+\begin{equation*}
+D_{\alpha }:\psi _{\alpha }(U_{\alpha })\times \mathbb{E}\times \mathbb{E}%
+\times \mathbb{E}\rightarrow \psi _{\alpha }(U_{\alpha })\times
+\mathbb{E}
+\end{equation*}%
+with $D_{\alpha }:=\Psi _{\alpha }\circ D\circ (\widetilde{\Psi
+}_{\alpha })^{-1},$ $\alpha \in I,$ via the relation
+\begin{equation*}
+D_{\alpha }(y,u,v,w)=(y,w+\omega _{\alpha }(y,u)\cdot v).
+\end{equation*}%
+$D$ is  linear if and only if $%
+\{\omega _{\alpha }\}_{\alpha \in I}$ are linear in
+the second variable.
+
+Such a connection $D$ is characterized by the
+Christoffel
+symbols $\{\Gamma _{\alpha }\}_{\alpha \in I}$ ,  smooth mappings%
+\begin{equation*}
+\Gamma _{\alpha }:\psi _{\alpha }(U_{\alpha })\longrightarrow \mathcal{L}(%
+\mathbb{E},\mathcal{L}(\mathbb{E},\mathbb{E}))
+\end{equation*}%
+defined by $\Gamma _{\alpha }(y)[u]=\omega _{\alpha }(y,u)$,
+$(y,u)\in \psi _{\alpha }(U_{\alpha })\times \mathbb{E}$.
+ On chart overlaps:
+\begin{eqnarray*}
+\Gamma _{\alpha }(\sigma _{\alpha \beta }(y))(d\sigma _{\alpha
+\beta }(y)(u))[d(\sigma _{\alpha \beta }(y))(v)]+(d^{2}\sigma
+_{\alpha \beta
+}(y)(v))(u) \\
+=d\sigma _{\alpha \beta }(y)((\Gamma _{\beta }(y)(u))(v)),
+\end{eqnarray*}
+for all $(y,u,v)\in \psi _{\alpha }(U_{\alpha }\cap U_{\beta
+})\times \mathbb{E}\times \mathbb{E}.$ Here $d$, $d^{2}$ stand for
+the first and the second differential and by
+$\sigma _{\alpha \beta }=\psi _{\alpha }\circ \psi _{\beta }^{-1}$ of $%
+\mathbb{E}$.
+\newpage
+{\bf Projective system of Banach manifolds}\\
+Let $\{M^{i};\varphi ^{ji}\}_{i,j\in \mathbb{N}}$ be a projective
+system of Banach manifolds modeled on the Banach spaces
+$\{\mathbb{E}^{i}\}$ respectively. We assume that
+
+\textbf{(i)} the models form also a projective limit
+$\mathbb{F}=\varprojlim \mathbb{E}^{i}$,
+
+\textbf{(ii) }for each $x=(x^{i})\in M$ there exists a projective
+system of local charts $\{(U^{i},\psi ^{i})\}_{i\in \mathbb{N}}$
+such that $x^{i}\in U^{i}$ and the corresponding limit
+$\varprojlim U^{i}$ is open in $M$.
+
+Then the projective limit $M=\varprojlim M^{i}$ can be endowed with a Fr\'{e}%
+chet manifold structure modeled on $\mathbb{F}$ via the charts $%
+\{(\varprojlim U^{i},\varprojlim \psi ^{i})\}$. Moreover, the
+tangent bundle $TM$ of $M$ is also endowed with a Fr\'{e}chet
+manifold structure of the same type modeled on $\mathbb{F}\times
+\mathbb{F}$.
+
+\newpage
+The local structure now is defined by the projective
+limits of the differentials of $\{\psi ^{i}\}$ and $TM$ turns out
+to be an isomorph of $\varprojlim TM^{i}$.
+
+\vspace{0.5cm}
+Here we adopt the
+definition of Leslie~\cite{LE1},~\cite{LE2} for the
+differentiability of mappings between Fr\'{e}chet spaces. However,
+the differentiability proposed by Kriegl and Michor~\cite{Mich}
+is also suited to our study.
+
+\newpage
+
+\section{$T^2M$ for infinite dimensional Banach manifolds}
+{\bf $T^2M$ for infinite dimensional Banach manifolds}\\
+
+\vspace{0.5cm}
+
+Let $M$ be a smooth manifold modeled on the infinite dimensional Banach
+space $\mathbb{E}$ and $\{(U_{\alpha },\psi _{\alpha })\}_{\alpha \in I}$ a
+corresponding atlas.
+
+\vspace{0.5cm}
+For each $x\in M$ we define an equivalence
+relation $\approx _{x}$ on
+$$C_{x}=\{f:(-\varepsilon ,\varepsilon )\rightarrow M \ | \ f
+{\rm smooth \ and} \ f(0)=x, \varepsilon >0\}:$$
+\begin{equation*}
+f\approx _{x}g\Leftrightarrow f^{^{\prime }}(0)=g^{\prime }(0)\text{ and }%
+f^{\prime \prime }(0)=g^{\prime \prime }(0).
+\end{equation*}%
+
+\newpage
+{\bf Definition}\\
+We define the {\em tangent space of order two} of $M$ at the point $x$ to
+be the quotient $T_{x}^{2}M=C_{x}/\approx _{x}$ and the {\em tangent
+bundle of order two} of $M$ the union of all tangent spaces of order 2: $%
+T^{2}M:=\underset{x\in M}{\cup }T_{x}^{2}M$.
+
+
+Of course, $T_{x}^{2}M$ is a
+topological vector space isomorphic to $\mathbb{E}\times \mathbb{E}$ via the
+bijection
+\begin{equation*}
+T_{x}^{2}M\overset{\simeq }{\longleftrightarrow }\mathbb{E}\times \mathbb{E}%
+:[f,x]_{2}\longmapsto ((\psi _{\alpha }\circ f)^{\prime }(0),(\psi _{\alpha
+}\circ f)^{\prime \prime }(0)),
+\end{equation*}%
+where $[f,x]_{2}$ stands for the equivalence class of $f$ with respect to $%
+\approx _{x}$. However, this structure depends on the choice of the chart $%
+(U_{\alpha },\psi _{\alpha })$, hence a definition of a vector bundle
+structure on $T^{2}M$ cannot be achieved. With a linear connection we solve this problem.
+
+\vspace{0.5cm}
+
+{\bf Theorem}\\
+\label{T2Mvb} Given a linear connection $D$ on $M$,
+then $T^{2}M$ becomes a Banach vector bundle with structure
+group the general linear group $GL(\mathbb{E}\times \mathbb{E)}$.
+Moreover, $T^{2}M$ is isomorphic to $TM\times TM$ since both
+bundles are characterized by the same cocycle $\{(d\sigma _{\alpha \beta
+}\circ \psi _{\beta })\times (d\sigma _{\alpha \beta }\circ \psi _{\beta
+})\}_{\alpha ,\beta \in I}$ of transition functions.
+\vspace{0.5cm}
+
+We have also a converse\\
+
+{\bf Theorem}\\
+Let $M$ be a smooth manifold modeled on the Banach space $%
+\mathbb{E}$. If the second order tangent bundle $T^{2}M$ of $M$ admits a
+vector bundle structure, with fibres of type $\mathbb{E}\times \mathbb{E}$,
+isomorphic to the product of vector bundles $TM\times TM$, then a linear
+connection can be defined on $M$.
+
+\newpage
+\section{Conjugacy classes for Banach bundles $T^2M$}
+{\bf Conjugacy classes for Banach bundles $T^2M$}\\
+
+\vspace{0.5cm}
+Using results of Vassiliou~\cite{Vass},
+Dodson, Galanis and Vassiliou~\cite{Dod-Gal-Vass} investigated the classification of
+the vector bundle structures induced on $T^2M$ by a linear connection on $M$ via
+the conjugacy classes of second order differentials.
+
+\vspace{0.5cm}
+
+Given smooth $g:M\rightarrow N$ between Banach manifolds with linear connections,
+$(M,\nabla _{M})$ and $(N,\nabla _{N}),$ the second order differential is well-defined by
+
+\begin{equation*}
+T^{2}g:T^{2}M\longrightarrow T^{2}N:[(c,x)]_{2}\mapsto \lbrack
+(g\circ c,g(x))]_{2}.
+\end{equation*}
+
+\newpage
+$\nabla _{M}$ and $\nabla _{N}$ are called $g$\emph{-conjugate}
+ if they commute with the differentials of $g:(M,\nabla _{M} )\rightarrow (N,\nabla _{N}):$
+\begin{equation*}\label{eq1}
+Tg\circ \nabla _{M}=\nabla _{N}\circ T(Tg).
+\end{equation*}%
+The local expression of the latter is the following:
+\begin{equation*}\label{eq2}
+ \begin{gathered}
+   DG(\phi _{\alpha }(x))(\Gamma _{\alpha }^{M}(\phi _{\alpha
+   }(x))(u)(u))=\\
+ \Gamma _{\beta }^{N}(G(\phi _{\alpha }(x)))(DG(\phi _{\alpha
+}(x))(u))(DG(\phi _{\alpha }(x))(u))+ \\
++ D(DG)((\phi _{\alpha
+}(x))(u,u),
+   \end{gathered}
+\end{equation*}%
+for every $(x,u)\in U_{\alpha }\times \mathbb{E}.$
+
+\newpage
+{\bf Examples}\\
+\textbf{1.} In the case of a constant map $g$, the condition
+collapses to a trivial identification of zero
+quantities, since the local expression $G $ is constant.
+As a result, all linear connections are conjugate through constant
+maps.
+
+\textbf{2. }If we consider the identity map $g=id_{M}$, then
+\begin{gather*}
+D\phi _{\beta \alpha }(\phi _{\alpha }(x))(\Gamma _{\alpha
+}^{M}(\phi _{\alpha }(x))(u)(u))=\\[1pt]
+ \Gamma _{\beta }^{N}(\phi
+_{\beta }(x))(D\phi _{\beta \alpha }(\phi _{\alpha }(x))(u))(D\phi
+_{\beta \alpha }(\phi _{\alpha }(x))(u))+D^{2}\phi _{\beta \alpha
+}(\phi _{\alpha }(x))(u,u). \notag
+\end{gather*}%
+The latter is equivalent to the chart overlap compatibility condition satisfied
+by the Christoffel symbols of a connection on $M.$ Any
+$id_{M}$-conjugate connections have to be equal and the
+conjugation relationship in this case reduces to equality.
+
+\newpage
+
+{\bf Theorem}\\
+Let $T^{2}M$, $T^{2}N$ be the second order tangent bundles defined
+by the pairs $(M,\nabla _{M})$, $(N,\nabla _{N})$, and let
+$g:M\rightarrow N$
+be a smooth map. If the connections $\nabla _{M}$ and $\nabla _{N}$ are $%
+g$-conjugate, then the second order differential
+$T^{2}g:T^{2}M\rightarrow T^{2}N$ is a vector bundle morphism~\cite{Dod-Gal-Vass}.
+
+\newpage
+
+{\bf Theorem}\\
+Let $\nabla $, $\nabla ^{\prime }$ be two linear connections on
+$M$. If $g$
+is a diffeomorphism of $M$ such that $\nabla $ and $\nabla ^{\prime }$ are $%
+g $-conjugate, then the vector bundle structures on $T^{2}M$, induced by $%
+\nabla $ and $\nabla ^{\prime }$, are isomorphic~\cite{Dod-Gal-Vass}. \label{isom}
+
+\vspace{0.5cm}
+
+{\bf Corollary}\\
+Up to isomorphism, the elements of the $g$-conjugate equivalence class $%
+[(M,\nabla )]_g$ determine the same vector bundle structure on
+$T^{2}M$. Consequently, the latter structure depends not only on a
+pair $(M,\nabla )$ but also on the entire class $[(M,\nabla )]_g$~\cite{Dod-Gal-Vass}.
+
+\newpage
+\section{Fr\'{e}chet manifolds}
+{\bf Fr\'{e}chet manifolds}\\
+Lewis~\cite{lewis} gives some background material on Fr\'{e}chet spaces and in particular on the
+Fr\'{e}chet projective limit of Banach spaces and the
+Fr\'{e}chet space of infinite jets---ie Taylor series.
+
+For $M$ modeled on a Fr\'{e}chet
+(non-Banach) space $\mathbb{F}$, there are
+complications because of the pathological structure of the general linear groups $GL(%
+\mathbb{F})$, $GL(\mathbb{F}\times \mathbb{F}),$ which does not even admit
+non-trivial topological group structures.
+
+\vspace{0.5cm}
+Also, the space of continuous linear mappings
+between Fr\'{e}chet spaces does not remain in the same category of
+topological vector spaces, and we lack a general solvability
+theory of differential equations on $\mathbb{F}.$ These problems are discussed in the
+2005 Monastir Summer School Lecture Notes of Neeb~\cite{Neeb}.
+
+
+\newpage
+{\bf Fr\'{e}chet projective limits of Banach manifolds}\\
+\vspace{0.2cm}
+Restricting ourselves to those Fr\'{e}chet manifolds which can be
+obtained as projective limits of Banach manifolds, it
+is possible to endow $T^{2}M$ with a vector bundle structure over
+$M$ with structure group a new topological (and in a generalized
+sense Lie) group which replaces the pathological general linear
+group of the fibre type.
+
+\vspace{0.5cm}
+This construction is equivalent to the
+existence on $M$ of a specific type of linear connection
+characterized by a generalized set of Christoffel symbols.
+
+
+
+\newpage
+Let $M$ be a smooth manifold modeled on the Fr\'{e}chet space $%
+\mathbb{F}.$ Taking into account that the latter \emph{always} can be
+realized as a projective limit of Banach spaces $\{\mathbb{E}^{i};\rho
+^{ji}\}_{i,j\in \mathbb{N}}$ (i.e. $\mathbb{F\cong }\varprojlim \mathbb{E}%
+^{i}$) we assume that the manifold itself is obtained as the limit of a
+projective system of Banach modeled manifolds $\{M^{i};\varphi
+^{ji}\}_{i,j\in \mathbb{N}}$.
+Then, we obtain:
+
+\vspace{0.5cm}
+{\bf Proposition}\\
+The second order tangent bundles $\{T^{2}M^{i}\}_{i\in \mathbb{N}}$ form
+also a projective system with limit (set-theoretically) isomorphic to $%
+T^{2}M $.\\
+\newpage
+
+Next we define a vector bundle structure on $%
+T^{2}M $ by means of a certain type of linear connection on $M.$ The
+problems concerning the structure group of this bundle
+are overcome by the replacement of the pathological $GL(\mathbb{F}\times
+\mathbb{F})$ by the new topological (and in a generalized sense smooth Lie)
+group:%
+\begin{equation*}
+\mathcal{H}^{0}(\mathbb{F\times F}):=\{(l^{i})_{i\in \mathbb{N}}\in {%
+\prod_{i=1}^{\infty }}GL(\mathbb{E}^{i}\mathbb{\times E}^{i}):\,\varprojlim
+l^{i}\,\text{\ exists}\}.
+\end{equation*}
+
+\newpage
+To be more specific, $\mathcal{H}^{0}(\mathbb{F\times F})$ is a topological
+group being isomorphic to the projective limit of the Banach-Lie groups
+\begin{equation*}
+\mathcal{H}_{i}^{0}(\mathbb{F\times F}):=\{(l^{1},l^{2},...,l^{i})_{i\in
+\mathbb{N}}\in {\prod_{k=1}^{i}}GL(\mathbb{E}^{k}\mathbb{\times E}%
+^{k}):\,\rho^{jk}\circ l^{j}=l^{k}\circ \rho^{jk}\,\text{\ }
+\end{equation*}%
+for $k\leq j\leq i.$
+
+
+\vspace{0.5cm}
+On the other hand, it can be considered as a generalized Lie group via its
+embedding in the topological vector space $\mathcal{L}(\mathbb{F\times F})$.
+
+\newpage
+{\bf Theorem}\\
+If a Fr\'{e}chet manifold $M=\varprojlim M^{i}$ is endowed with a linear
+connection $D$ that can be also realized as a projective limit of
+connections $D=\varprojlim D^{i}$, then $T^{2}M$ is a Fr\'{e}chet vector
+bundle over $M$ with structure group $\mathcal{H}^{0}(\mathbb{F\times F}).$\\
+
+
+\vspace{0.5cm}
+Conversely, if $T^{2}M$ is an $\mathcal{H}^{0}(\mathbb{F}\times \mathbb{F})-$Fr\'{e}chet
+vector bundle over $M$ isomorphic to $TM\times TM$, then $M$ admits a linear
+connection which can be realized as a projective limit of connections.
+\vspace{0.5cm}
+
+
+
+
+\newpage
+\section{Bibliography}{\bf Bibliography}\\
+\begin{thebibliography}{99}
+
+\bibitem{Berger} Marcel Berger, Jean-Pierre Bourguignon, Yvonne Choquet-Bruhat,
+Charles-Michel Marle, and Andr\'e Revuz. André Lichnerowicz 1915-1998. {\em Notices
+American Mathematical Society} 46, 11, 1388-1396.
+
+\bibitem{Cahen} M. Cahen and M. Flato, Editors. {\bf Differential geometry and relativity.
+A volume in honour of André Lichnerowicz on his 60th birthday}.
+Mathematical Physics and Applied Mathematics, Vol. 3.
+D. Reidel Publishing Co., Dordrecht-Boston, Mass., 1976.
+
+\bibitem{Dod-Gal} C.T.J. Dodson and G.N. Galanis. Second order
+tangent bundles of infinite dimensional manifolds. {\em J. Geom.
+Phys.}, 52 (2004) 127-136.
+
+\bibitem{Dod-Gal-Vass1} C.T.J. Dodson, G.N. Galanis and E. Vassiliou. A generalized
+second-order
+frame bundle for Frech\'{e}t manifolds. {\em J. Geom.
+Phys.}, 55 (2005) 291-305.
+
+
+\bibitem{Dod-Gal-Vass} C.T.J. Dodson, G.N. Galanis and E. Vassiliou.
+Isomorphism classes for Banach vector bundle structures of
+second tangents. {\em Math.~Proc.\ Camb.\ Phil.\
+Soc.} 141 (2006) 489-496. \\
+ {\tiny \verb+ http://www.maths.manchester.ac.uk/~kd/PREPRINTS/isomt2m.pdf+}
+
+\bibitem{Dod} C.T.J. Dodson and M.S. Radivoiovici.
+Tangent and Frame bundles of order two. {\em Analele
+stiintifice ale Universitatii ''Al. I. Cuza'',} 28 (1982),
+63-71.
+
+\bibitem{Gal2} G. Galanis. Projective Limits of vector bundles.
+{\em Portugaliae Mathematica,}  (1998), 11-24.
+
+\bibitem{Mich} A. Kriegl, P. Michor. {\bf The
+convenient setting of global analysis}, Mathematical Surveys and Monographs,
+53 American Mathematical Society. Providence, RI 1997.
+
+
+\bibitem{LE1} J.A. Leslie, On a differential structure for the
+group of diffeomorphisms. {\em Topology} 46 (1967),
+263-271.
+
+\bibitem{LE2} J.A. Leslie. Some Frobenious theorems in Global
+Analysis. {\em J. Diff. Geom.} 42 (1968), 279-297.
+
+
+\bibitem{lewis} A. D. Lewis. The bundle of infinite jets.
+Preprint, 2006.
+{\tiny \verb+http://penelope.mast.queensu.ca/math949/pdf/infinite-jets.pdf+}
+
+
+\bibitem{AL} A. Lichnerowicz.
+{\bf Deformations and geometric (KMS)-conditions.
+Quantum theories and geometry} Les Treilles, 1987, 127-143,
+Mathematical Physics Studies, 10,
+Kluwer Acad. Publ., Dordrecht, 1988.
+
+\bibitem{manoharan98} P. Manoharan. Characterization for
+spaces of sections. {\em Proc. Am. Math. Soc.} {126}, 4, (1998)
+1205-1210.
+
+\bibitem{manoharan} P. Manoharan. On the geometry of free
+loop spaces. {\em Int. J. Math. Math. Sci.} {30}, 1, (2002) 15-23.
+
+\newpage
+\bibitem{Neeb} K-H. Neeb, {\bf Infinite Dimensional Lie Groups},
+ 2005 Monastir Summer School Lectures, Lecture Notes January 2006.\\
+{\tiny \verb+http://wwwbib.mathematik.tu-darmstadt.de/Math-Net/Preprints/Listen/pp06.html+}
+
+\bibitem{Om} H. Omori. On the group of diffeomorphisms on a
+compact manifold. {\em Proc. Symp. Pure Appl. Math., XV, Amer. Math.
+Soc.} (1970) 167-183.
+
+\bibitem{omori} H. Omori. {\bf Infinite-dimensional Lie groups},
+Translations of Mathematical Monographs, {158}, Berlin,
+American Mathematical Society (1997).
+
+
+\bibitem{Takens} F. Takens. A global version of the inverse
+problem of the calculus of variations. {\em J. Dif. Geom.}, {14}
+(1979), 543-562.
+
+\bibitem{Vass} E. Vassiliou. Transformations of Linear
+Connections II. {\em Period. Math. Hung.}, 17, 1
+(1986), 1-11.
+
+\bibitem{Vi} J. Vilms. Connections on tangent bundles. {\em J.
+Diff. Geom.} 41 (1967), 235-243.
+\end{thebibliography}
+
+\end{document}

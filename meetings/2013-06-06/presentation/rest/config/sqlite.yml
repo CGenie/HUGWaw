@@ -1,0 +1,20 @@
+Default: &defaults
+  database: rest.sqlite3
+  poolsize: 10
+
+Development:
+  <<: *defaults
+
+Testing:
+  database: rest_test.sqlite3
+  <<: *defaults
+
+Staging:
+  database: rest_staging.sqlite3
+  poolsize: 100
+  <<: *defaults
+
+Production:
+  database: rest_production.sqlite3
+  poolsize: 100
+  <<: *defaults

@@ -1,0 +1,151 @@
+\documentclass[landscape]{beamer}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{ifpdf}
+\usepackage{color}
+\usepackage{verbatim}
+\newenvironment{code}{\footnotesize\verbatim}{\endverbatim\normalsize}
+
+\ifpdf
+  \DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+
+\newcommand{\divergence}{\operatorname{div}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathcal{K}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\f}{\mathfrak{f}}
+\newcommand{\tr}{\operatorname{tr}}
+\renewcommand{\skew}{\operatorname{skew}}
+\newcommand{\axl}{\operatorname{axl}}
+\newcommand{\obciete}{\!\!\mid_{\partial \Omega}}
+\newcommand{\hkbr}{{\lbrace h, k \rbrace}}
+
+\newtheorem{thm}{Twierdzenie}
+\newtheorem{lem}{Lemat}
+\newtheorem{defi}{Definicja}
+\newtheorem{rem}{Uwaga}
+\newtheorem{cor}{Wniosek}
+
+\definecolor{red}{rgb}{1,0,0}
+
+\mode<presentation>
+\usetheme{Warsaw}
+
+\title[Zabawy z Yesod i Fay]{Zabawy z Yesod i Fay}
+\author{Przemys\l{}aw Kami\'nski}
+\date{6 czerwca 2013 \\ HUG Warsaw}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yesod -- wst\k{e}p}
+    \emph {Yesod} (hebr. ,,podstawa'') -- jedna z kabalistycznych sefir,
+    \l{}\k{a}cz\k{a}ca \'swiat materialny z duchowym
+    \uncover<+->{} \uncover<+->{... oraz Web Framework napisany w Haskellu}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yesod -- konfiguracja prostej aplikacji}
+  \begin{center}
+    \uncover<+->{Szybki wst\k{e}p (dla wersji >= 1.2):}
+  \end{center}
+  \begin{uncoverenv}<+->
+    \verb;\#> cabal install yesod-platform yesod-bin yesod-test yesod-static cabal-dev
+  \end{uncoverenv}
+
+  \begin{uncoverenv}<+->
+    \verb;\#> yesod init \ \ \ \ \# project 'rest' with sqlite
+  \end{uncoverenv}
+
+  \begin{uncoverenv}<+->
+    \verb;\#> cd rest \&\& cabal-dev install \&\& yesod -{}-dev devel
+  \end{uncoverenv}
+  
+  \begin{uncoverenv}<+->
+    \begin{center}
+      $\longrightarrow$
+      \verb;http://localhost:3000
+    \end{center}
+  \end{uncoverenv}
+
+  \begin{uncoverenv}<+->
+    \begin{center}
+      Serwer produkcyjny: \\
+      \verb;cabal-dev -fproduction configure \&\& cabal-dev build \&\& ./cabal-dev/bin/rest Production
+    \end{center}
+  \end{uncoverenv}
+
+  \begin{uncoverenv}<+->
+     \verb;\#> yesod test
+  \end{uncoverenv}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Yesod -- podstawy}
+  \begin{uncoverenv}<+->
+    Zmiana w pliku $\Rightarrow$ rekompilacja w locie przez serwer
+  \end{uncoverenv}
+
+  \begin{center}
+    \uncover<+->{Katalogi:} \\
+    \uncover<+->{\texttt{./config/routes}} \\
+    \uncover<+->{\texttt{./Handler/}} \\
+    \uncover<+->{\texttt{./templates/}}
+    \uncover<+->{\texttt{*.\{\alert<.>{hamlet}\only<.>{({\color{blue}{HTML}})\}}}}
+    \uncover<+->{\texttt{,\alert<.>{lucius}\only<.>{({\color{blue}{CSS}})\}}}}
+    \uncover<+->{\texttt{,\alert<.>{julius}\only<.>{({\color{blue}{JS}})}\}}} \\
+    \uncover<+->{\texttt{./config/models}}
+  \end{center}
+
+  \begin{uncoverenv}<+->
+    \begin{center}
+      Zr\'obmy sobie \textt{git init} i zacommitujmy t\k{a} wersj\k{e}.
+    \end{center}
+  \end{uncoverenv}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yesod -- Echo!}
+
+  Request GET pod \texttt{/echo/\{\alert<+->{str}\}} zwraca HTML z
+  \texttt{<h1>\{\alert<.->{str}\}</h1>}.
+
+  \begin{uncoverenv}<+->
+    \texttt{\#> yesod add-handler} \\
+    \texttt{name: Echo, pattern: /echo/\#String, request: GET}
+  \end{uncoverenv}
+
+  \uncover<+->{\texttt{git status...}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yesod -- poka\.z kotu co masz w \'srodku}
+  
+  \begin{uncoverenv}<+->
+    \begin{center}
+      \texttt{,,Press ENTER to quit''}
+      albo
+      {\color<1>{blue}{\verb;./devel.hs}}
+      $\rightarrow$ \texttt{terminateDevel}
+    \end{center}
+  \end{uncoverenv}
+
+  \uncover<+->{}
+\end{frame}
+
+
+\end{document}

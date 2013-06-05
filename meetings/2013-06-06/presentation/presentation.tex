@@ -52,8 +52,8 @@
 
 \begin{frame}
   \frametitle{Yesod -- wst\k{e}p}
-    \emph {Yesod} (hebr. ,,podstawa'') -- jedna z kabalistycznych sefir,
-    \l{}\k{a}cz\k{a}ca \'swiat materialny z duchowym
+    \emph {Yesod} (hebr. ``fundament'', ``podstawa'') -- jedna z kabalistycznych
+    sefir, \l{}\k{a}cz\k{a}ca \'swiat materialny z duchowym
     \uncover<+->{} \uncover<+->{... oraz Web Framework napisany w Haskellu}
 \end{frame}
 
@@ -63,33 +63,35 @@
     \uncover<+->{Szybki wst\k{e}p (dla wersji >= 1.2):}
   \end{center}
   \begin{uncoverenv}<+->
-    \verb;\#> cabal install yesod-platform yesod-bin yesod-test yesod-static cabal-dev
+    \texttt{\#> cabal install yesod-platform yesod-bin yesod-test yesod-static
+      cabal-dev}
   \end{uncoverenv}
 
   \begin{uncoverenv}<+->
-    \verb;\#> yesod init \ \ \ \ \# project 'rest' with sqlite
+    \texttt{\#> yesod init \ \ \ \ \# project 'rest' with sqlite}
   \end{uncoverenv}
 
   \begin{uncoverenv}<+->
-    \verb;\#> cd rest \&\& cabal-dev install \&\& yesod -{}-dev devel
+    \texttt{\#> cd rest \&\& cabal-dev install \&\& yesod -{}-dev devel}
   \end{uncoverenv}
   
   \begin{uncoverenv}<+->
     \begin{center}
       $\longrightarrow$
-      \verb;http://localhost:3000
+      \texttt{http://localhost:3000}
     \end{center}
   \end{uncoverenv}
 
   \begin{uncoverenv}<+->
     \begin{center}
       Serwer produkcyjny: \\
-      \verb;cabal-dev -fproduction configure \&\& cabal-dev build \&\& ./cabal-dev/bin/rest Production
+      \texttt{cabal-dev -fproduction configure \&\& cabal-dev build \&\&
+        ./cabal-dev/bin/rest Production}
     \end{center}
   \end{uncoverenv}
 
   \begin{uncoverenv}<+->
-     \verb;\#> yesod test
+     \texttt{\#> yesod test}
   \end{uncoverenv}
 \end{frame}
 
@@ -106,14 +108,14 @@
     \uncover<+->{\texttt{./Handler/}} \\
     \uncover<+->{\texttt{./templates/}}
     \uncover<+->{\texttt{*.\{\alert<.>{hamlet}\only<.>{({\color{blue}{HTML}})\}}}}
-    \uncover<+->{\texttt{,\alert<.>{lucius}\only<.>{({\color{blue}{CSS}})\}}}}
-    \uncover<+->{\texttt{,\alert<.>{julius}\only<.>{({\color{blue}{JS}})}\}}} \\
+    \uncover<+->{\texttt{, \alert<.>{lucius}\only<.>{({\color{blue}{CSS}})\}}}}
+    \uncover<+->{\texttt{, \alert<.>{julius}\only<.>{({\color{blue}{JS}})}\}}} \\
     \uncover<+->{\texttt{./config/models}}
   \end{center}
 
   \begin{uncoverenv}<+->
     \begin{center}
-      Zr\'obmy sobie \textt{git init} i zacommitujmy t\k{a} wersj\k{e}.
+      Zr\'obmy sobie \texttt{git init} i zacommitujmy t\k{a} wersj\k{e}.
     \end{center}
   \end{uncoverenv}
 \end{frame}
@@ -129,17 +131,177 @@
     \texttt{name: Echo, pattern: /echo/\#String, request: GET}
   \end{uncoverenv}
 
-  \uncover<+->{\texttt{git status...}}
+  \vspace{1em}
+
+  \uncover<+->{\texttt{git status...}} \\
 \end{frame}
 
 \begin{frame}
-  \frametitle{Yesod -- poka\.z kotu co masz w \'srodku}
+  \frametitle{Yesod -- Echo! c.d.}
+
+  \begin{uncoverenv}<+->
+    Edytujemy \texttt{./Handler/Echo.hs}: \\
+    \vspace{1em}
+    \texttt{getEchoR theText = defaultLayout \\
+      \hspace{6em} [whamlet|<h1>\#\{theText\}|]}
+  \end{uncoverenv}
+
+  \vspace{1em}
+
+  \uncover<+->{Script injection protection: \\
+    \texttt{/echo/\%3Cscript\%3Ealert\%28\%22foo\%22\%29\%3C\%2Fscript\%3E}} \\
+
+  \vspace{1em}
+
+  \uncover<+->{Wszystko dzi\k{e}ki systemowi typ\'ow, kt\'ory konwertuje typ
+    \texttt{URL} na \texttt{String} ({\it The web, by its very nature, is not
+      type safe. Even the simplest case of distinguishing between an integer and
+      string is impossible: all data on the web is transferred as raw bytes,
+      evading our best efforts at type safety. Every app writer is left with the
+      task of validating all input.}, Yesod Book)}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yesod -- Echo! c.d.}
+
+  \begin{uncoverenv}<+->
+    Aby zamiast typu \texttt{String} u\.zywa\'c typu
+    \texttt{Data.Text}, dodajemy jako ostatni import w pliku
+    \texttt{./Foundations.hs}:
+
+    \vspace{1em}
+
+    \texttt{{\color{blue} import} Data.Text}
+
+    \vspace{1em}
+
+    a w pliku \texttt{./config/routes} zamieniamy \texttt{\#String} na
+    \texttt{\#Text}. \\
+    Modyfikujemy jeszcze syngnatur\k{e} funkcji \texttt{getEchoR} w pliku
+    \texttt{./Handler/Echo.hs}.
+  \end{uncoverenv}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yesod -- system szablon\'ow}
+
+  \begin{uncoverenv}<+->
+    \alert<.->{hamlet} -- biblioteka do renderowania HTML z szablon\'ow \\
+    \texttt{http://hackage.haskell.org/package/hamlet-1.1.7}
+  \end{uncoverenv}
+
+  \vspace{1em}
+
+  \begin{uncoverenv}<+->
+    Dodajemy plik \texttt{./templates/echo.hamlet} z zawarto\'sci\k{a}: \\
+
+    \vspace{1em}
+
+    \texttt{<h1>\#\{theText\}}
+
+    \vspace{1em}
+
+    a w pliku \texttt{./Handler/Echo.hs} dajemy \\
+    
+    \vspace{1em}
+
+    \texttt{getEchoR theText = defaultLayout \$(widgetFile ``echo'')}
+  \end{uncoverenv}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yesod -- lustro}
+
+  \begin{uncoverenv}<+->
+    \texttt{\#> yesod add-handler} \\
+    \texttt{name: Mirror, pattern: /mirror, request: GET POST}
+  \end{uncoverenv}
+
+  \vspace{1em}
+
+  \uncover<+->{Edytujemy \texttt{./Handler/Mirror.hs}...}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yesod -- blog}
+
+  \begin{uncoverenv}<+->
+    \texttt{\#> yesod add-handler} \\
+    \texttt{name: Blog, pattern: /blog, request: GET POST}
+  \end{uncoverenv}
+
+  \begin{uncoverenv}<+->
+    \texttt{\#> yesod add-handler} \\
+    \texttt{name: Article, pattern: /blog/\#ArticleId, request: GET}
+  \end{uncoverenv}
+
+  \vspace{1em}
+
+  \begin{uncoverenv}<+->
+    Edytujemy \texttt{./config/models}...
+  \end{uncoverenv}
+ \uncover<+->{w konsoli z serwerem widzimy komunikat \\
+   \texttt{Migrating: CREATE TABLE ``article''(``id'' INTEGER PRIMARY
+     KEY,``title'' VARCHAR NOT NULL,``content'' VARCHAR NOT NULL)}}
+
+  \vspace{1em}
+
+  \uncover<+->{Edytujemy \texttt{./Handler/Blog.hs}... \\}
+  \uncover<+->{\hspace{2em} \texttt{./templates/articles.hamlet}... \\}
+  \uncover<+->{\hspace{2em} \texttt{./templates/articleError.hamlet}... \\}
+  \uncover<+->{\hspace{2em} \texttt{./Handler/Article.hs}... \\}
+  \uncover<+->{\hspace{2em} \texttt{./templates/article.hamlet}...}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hamlet}
+
+  \begin{itemize}
+    \uncover<+->{\item sterowany indentacj\k{a}}
+    \uncover<+->{$\rightarrow$ bez tag\'ow zamykaj\k{a}cych! \\}
+    \uncover<+->{\texttt{<h1>Tytu\l{}} \\ \hspace{2em}}
+    \uncover<+->{lub \\
+      \texttt{<h1>D\l{}u\.zszy \# \\
+              \ \ \ \ tytu\l{}}}
+    \uncover<+->{\item nie trzeba domyka\'c tag\'ow, je\'sli nic za nimi nie
+      b\k{e}dzie w danej linii: \\
+      \texttt{<p \\
+              \ \ \ \ <a href=@\{MyHandler\}>My Handler}}
+    \uncover<+->{\item Zmienne:}
+    \begin{itemize}
+      \uncover<+->{\item \texttt{\#\{...\}} -- zwyk\l{}a zmienna \\}
+      \only<.>{np.: \\
+          \texttt{{\color{blue} import} {\color{green} qualified} Data.Text
+            {\color{green} as} T \\
+            getTestR = {\color{blue} do} \\
+            \hspace{2em} var <- return \$ toHtml \$ T.pack ``<script>'' \\
+            defaultLayout [whamlet|Variable: \#\{var\}|]}}
+      \uncover<+->{\item \texttt{@\{...\}} -- interpolacja URL (type-safe)}
+      \uncover<+->{\item \texttt{\^{}\{...\}} -- wklejanie innych szablon\'ow}
+      \uncover<+->{\item \texttt{@?\{...\}} -- URL z parametrami GET}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Julius, Cassius}
+
+  \uncover<+->{CSS -- \emph{Cassius} (lub \emph{Lucius}) \\}
+  \uncover<+->{JS -- \emph{Julius}}
+  
+  \vspace{1em}
+
+  \uncover<+->{Przyk\l{}ad: \texttt{./Handlers/Shakespeare.hs}...}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yesod -- REST + JSON (AESON)}
   
   \begin{uncoverenv}<+->
     \begin{center}
       \texttt{,,Press ENTER to quit''}
       albo
-      {\color<1>{blue}{\verb;./devel.hs}}
+      {\color<1>{blue}{\texttt{./devel.hs}}}
       $\rightarrow$ \texttt{terminateDevel}
     \end{center}
   \end{uncoverenv}

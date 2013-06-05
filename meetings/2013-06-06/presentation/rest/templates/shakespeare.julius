@@ -1,0 +1,11 @@
+$(document).ready(function() {
+    var $elem = $("h2").first();
+
+    var blink = function() {
+        $elem.fadeTo('fast', 0).fadeTo('fast', 1);
+
+	setTimeout(blink, 1000);
+    }
+
+    blink();
+})

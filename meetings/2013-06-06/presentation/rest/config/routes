@@ -9,3 +9,4 @@
 /mirror MirrorR GET POST
 /blog BlogR GET POST
 /blog/#ArticleId ArticleR GET
+/shakespeare ShakespeareR GET

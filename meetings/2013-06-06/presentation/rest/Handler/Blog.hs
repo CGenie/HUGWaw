@@ -22,8 +22,7 @@ getBlogR = do
          -- |lista artykulow z DB
          articles <- runDB $ selectList [] [Desc ArticleTitle]
          (articleWidget, enctype) <- generateFormPost entryForm
-         defaultLayout $ do
-                         $(widgetFile "articles")
+         defaultLayout $(widgetFile "articles")
 
 postBlogR :: Handler Html
 postBlogR = do

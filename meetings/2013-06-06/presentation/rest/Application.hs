@@ -27,6 +27,7 @@ import Handler.Mirror
 import Handler.Blog
 import Handler.Article
 import Handler.Shakespeare
+import Handler.Json
 
 -- This line actually creates our YesodDispatch instance. It is the second half
 -- of the call to mkYesodData which occurs in Foundation.hs. Please see the

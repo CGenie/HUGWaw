@@ -10,3 +10,4 @@
 /blog BlogR GET POST
 /blog/#ArticleId ArticleR GET
 /shakespeare ShakespeareR GET
+/json JsonR GET

@@ -139,12 +139,11 @@
 \begin{frame}
   \frametitle{Yesod -- Echo! c.d.}
 
-  \begin{uncoverenv}<+->
-    Edytujemy \texttt{./Handler/Echo.hs}: \\
+  \uncover<+->{Edytujemy \texttt{./Handler/Echo.hs}: \\
     \vspace{1em}
     \texttt{getEchoR theText = defaultLayout \\
-      \hspace{6em} [whamlet|<h1>\#\{theText\}|]}
-  \end{uncoverenv}
+      \hspace{6em} $\underset{\uncover<+->{\text{\alert{template Haskell (expression quotation)}}}}
+                             {\text{[whamlet|<h1>\#\{theText\}|]}}$}}
 
   \vspace{1em}
 
@@ -205,7 +204,9 @@
     
     \vspace{1em}
 
-    \texttt{getEchoR theText = defaultLayout \$(widgetFile ``echo'')}
+    \texttt{getEchoR theText = defaultLayout
+          $\underset{\uncover<+->{\alert<.>{\text{template Haskell (splice)}}}}
+                    {\text{\$(widgetFile ``echo'')}}$}
   \end{uncoverenv}
 \end{frame}
 
@@ -254,7 +255,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Hamlet}
+  \frametitle{Yesod -- Hamlet}
 
   \begin{itemize}
     \uncover<+->{\item sterowany indentacj\k{a}}
@@ -275,7 +276,9 @@
             {\color{green} as} T \\
             getTestR = {\color{blue} do} \\
             \hspace{2em} var <- return \$ toHtml \$ T.pack ``<script>'' \\
-            defaultLayout [whamlet|Variable: \#\{var\}|]}}
+            defaultLayout [whamlet|\\
+            \ \ \ \ Variable: \#\{var\}, Reversed: \#\{reverse var\} \\
+              |]}}
       \uncover<+->{\item \texttt{@\{...\}} -- interpolacja URL (type-safe)}
       \uncover<+->{\item \texttt{\^{}\{...\}} -- wklejanie innych szablon\'ow}
       \uncover<+->{\item \texttt{@?\{...\}} -- URL z parametrami GET}
@@ -284,9 +287,45 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Julius, Cassius}
+  \frametitle{Yesod -- Hamlet c.d.}
 
-  \uncover<+->{CSS -- \emph{Cassius} (lub \emph{Lucius}) \\}
+  \begin{itemize}
+    \uncover<+->{\item \texttt{newIdent} -- automatycznie generuje ID dla
+      elementu; potencjalnie redukuje to ilo\'s\'c b\l{}\k{e}d\'ow w komunikacji
+      HTML$\leftrightarrow$CSS$\leftrightarrow$JS}
+    \uncover<+->{\item \texttt{\$if/\$elseif/\$else}}
+    \uncover<+->{\item \texttt{\$forall}}
+    \uncover<+->{\item \texttt{\$maybe/\$nothing} (mo\.zna zast\k{a}pi\'c
+      \texttt{\$if, isJust, fromJust}) \\}
+    \uncover<.>{\texttt{\$maybe name <- maybeName \\
+                     \ \ \ \ <p>Your name is \#\{name\} \\
+                     \$nothing \\
+                     \ \ \ \ <p>I don't know your name.}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yesod -- Hamlet c.d. 2}
+
+  \begin{itemize}
+    \uncover<+->{\item warunkowe atrybuty: \\
+        \texttt{<input type=checkbox :isSelected:selected=true
+          :isCurrent:.current>}}
+    \uncover<+->{\item Skr\'oty: \\}
+    \uncover<+->{\texttt{<p \#\alert<.>{someId}>} $\Leftrightarrow$ \texttt{<p
+        id=''\alert<.>{someId}''>} \\}
+    \uncover<+->{\texttt{<p \#\#\{\alert<.>{var}\}>} $\Leftrightarrow$
+        \texttt{<p id=''\alert<.>{var\_value}''>} \\}
+    \uncover<+->{\texttt{<p .\alert<.>{someClass}>} $\Leftrightarrow$ \texttt{<p
+        class=''\alert<.>{someClass}''>}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yesod -- Julius, Cassius}
+
+  \uncover<+->{CSS -- \emph{Cassius} (lub \emph{Lucius} -- nadzbi\'or j\k{e}zyka
+    CSS) \\}
   \uncover<+->{JS -- \emph{Julius}}
   
   \vspace{1em}
@@ -295,19 +334,95 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Yesod -- REST + JSON (AESON)}
-  
-  \begin{uncoverenv}<+->
-    \begin{center}
-      \texttt{,,Press ENTER to quit''}
-      albo
-      {\color<1>{blue}{\texttt{./devel.hs}}}
-      $\rightarrow$ \texttt{terminateDevel}
-    \end{center}
-  \end{uncoverenv}
+  \frametitle{Yesod -- Widgety}
 
-  \uncover<+->{}
+  \uncover<+->{\emph{widget} -- ``klej'' \l{}\k{a}cz\k{a}cy
+    Hamlet/Cassius/Julius; ma\l{}e, sp\'ojne fragmenty HTML-CSS-JS, nadaj\k{a}ce
+    si\k{e} do wielokrotnego u\.zycia}
+
+  \vspace{1em}
+
+  \uncover<+->{Dzi\k{e}ki widgetom CSS-y zawsze trafiaj\k{a} do \texttt{HEAD}, a
+    JS-y albo do \texttt{HEAD} albo bezpo\'srednio do \texttt{BODY}.}
+
+  \vspace{1em}
+
+  \begin{uncoverenv}<+->
+    Widget sk\l{}ada si\k{e} z:
+    \begin{itemize}
+      \uncover<+->{\item tytu\l{}u}
+      \uncover<+->{\item zewn\k{e}trznych CSS}
+      \uncover<+->{\item zewn\k{e}trznych JS}
+      \uncover<+->{\item wewn\k{e}trznych CSS}
+      \uncover<+->{\item wewn\k{e}trznych JS}
+      \uncover<+->{\item dowonlej wstawki do \texttt{HEAD}}
+      \uncover<+->{\item dowonlej wstawki do \texttt{BODY}}
+    \end{itemize}
+  \end{uncoverenv}
+  \uncover<+->{\alert<.>{Zewn\k{e}trzne CSS/JS powinny pojawi\'c si\k{e} na
+      stronie tylko raz}}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Yesod -- Widgety c.d.}
+
+  \uncover<+->{Widgety mo\.zna \l{}\k{a}czy\'c: \\
+    \texttt{myWidget = {\color{blue} do} \\
+            \ \ \ \ myWidget1 \\
+            \ \ \ \ myWidget2}}
+
+  \vspace{1em}
+
+  \uncover<+->{\texttt{whamlet} -- \texttt{./whamlet.hs}}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yesod -- system routingu}
+
+  \uncover<+->{Yesod konwertuje do/z URL-i podanych w tabeli
+    routing\'ow. Wszystkie niekanoniczne URl-e ko\'ncz\k{a} si\k{e} redirectem
+    do URL kanonicznego.}
+
+  \begin{uncoverenv}<+->
+    Routing mo\.ze sk\l{}ada\'c si\k{e} z 3 cz\k{e}\'sci:
+    \begin{itemize}
+      \uncover<+->{\item \emph{statycznej} -- sta\l{}y string w URL,
+        np. \texttt{/echo}}
+      \uncover<+->{\item \emph{pojedynczej dynamicznej} -- \texttt{\#<Type>},
+        np. \texttt{/page/\#Int} (\texttt{Type} -- instancja
+        \texttt{SinglePiece})}
+      \uncover<+->{\item \emph{multi-dynamicznej} -- \texttt{\*<MultiType>},
+        np. \texttt{/page/\#Int} (\texttt{MultiType} -- instancja
+        \texttt{MultiPiece}) \\}
+        \uncover<+->{Typ multi musi wyst\k{e}powa\'c zawsze na ko\'ncu URL. \\}
+        \uncover<+->{Przydaje si\k{e} do implementowania URL-i o strukturze
+          drzewiastej, np. katalog plik\'ow albo wikipedia.}
+    \end{itemize}
+  \end{uncoverenv}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yesod -- REST + JSON (AESON)}
+
+  \alert<.->{Uwaga:} od wersji 1.2 \texttt{yesod-json} zosta\l{} w\l{}\k{a}czony
+  do \texttt{yesod-core} i zamiast zmieni\l{} namespace z \texttt{Yesod.Json} na
+  \texttt{Jesod.Core.Json}.
+
+  \vspace{1em}
+
+  \uncover<+->{\texttt{\#> yesod add-handler} \\
+    \texttt{name: Json, pattern: /json, request: GET}}
+
+  \vspace{1em}
+
+  \uncover<+->{\texttt{./Handler/Json.hs}...}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    {\huge Dzi\k{e}kuj\k{e}}
+  \end{center}
+\end{frame}
 
 \end{document}

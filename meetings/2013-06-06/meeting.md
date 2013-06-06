@@ -1,6 +1,6 @@
 
-Zabawy z Yesod i Fay
-====================
+Serwisy REST w Haskellu -- framework Yesod
+==========================================
 Proszę o przygotowanie środowiska:
 ```bash
 cabal install yesod-platform yesod-bin yesod-test yesod-static cabal-dev

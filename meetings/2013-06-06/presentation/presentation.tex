@@ -277,7 +277,7 @@
             getTestR = {\color{blue} do} \\
             \hspace{2em} var <- return \$ toHtml \$ T.pack ``<script>'' \\
             defaultLayout [whamlet|\\
-            \ \ \ \ Variable: \#\{var\}, Reversed: \#\{reverse var\} \\
+            \ \ \ \ Variable: \#\{var\}, Reversed: \#\{T.reverse var\} \\
               |]}}
       \uncover<+->{\item \texttt{@\{...\}} -- interpolacja URL (type-safe)}
       \uncover<+->{\item \texttt{\^{}\{...\}} -- wklejanie innych szablon\'ow}
